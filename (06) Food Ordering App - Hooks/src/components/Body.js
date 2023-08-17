@@ -4,7 +4,7 @@ import resList from "../utils/mockdata";
 
 const Body = () => {
   // Local State Variable - Super powerful variable
-  const [listOfRestaurants, setListOfRestraunt] = useState(resList);
+  const [listOfRestaurants, setlistOfRestaurants] = useState(resList);
 
   return (
     <div className="body">
@@ -15,7 +15,7 @@ const Body = () => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.data.avgRating > 4
             );
-            setListOfRestraunt(filteredList);
+            setlistOfRestaurants(filteredList);
           }}
         >
           Top Rated Restaurants
