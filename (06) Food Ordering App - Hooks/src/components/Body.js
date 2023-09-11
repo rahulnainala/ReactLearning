@@ -6,7 +6,7 @@ const Body = () => {
   // Local State Variable - Super powerful variable
   const [listOfRestaurants, setlistOfRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const [searchText, setsearchText] = useState(""); 
+  const [searchText, setsearchText] = useState("");
   useEffect(() => {
     fetchData();
   }, []);
@@ -41,21 +41,23 @@ const Body = () => {
             className="search-box"
             value={searchText}
             onChange={(e) => {
-              setsearchText(e.target.value);
+              setSearchText(e.target.value);
             }}
           />
           <button
             onClick={() => {
-              //Filter the Res cards and update the UI
+              // Filter the restraunt cards and update the UI
+              // searchText
               console.log(searchText);
-              const filteredRestaurant = listOfRestaurants.filter((res) =>
-              res.info.name.toLowerCase().includes(searchText.toLowerCase())
-            );
 
-            setFilteredRestaurant(filteredRestaurant);
-          }}
-        >
-            search
+              const filteredRestaurant = listOfRestaurants.filter((res) =>
+                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+
+              setFilteredRestaurant(filteredRestaurant);
+            }}
+          >
+            Search
           </button>
         </div>
         <button
@@ -64,7 +66,7 @@ const Body = () => {
             const filteredList = listOfRestaurants.filter(
               (res) => res.data.avgRating > 4
             );
-            setlistOfRestaurant(filteredList);
+            setListOfRestraunt(filteredList);
           }}
         >
           Top Rated Restaurants
@@ -72,14 +74,10 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCard
-            key={restaurant?.info.id}
-            resData={restaurant?.info}
-          />
+          <RestaurantCard key={restaurant?.info} resData={restaurant?.info} />
         ))}
       </div>
     </div>
   );
 };
-
 export default Body;
