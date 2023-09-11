@@ -6,7 +6,7 @@ const Body = () => {
   // Local State Variable - Super powerful variable
   const [listOfRestaurants, setlistOfRestaurant] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
-  const [searchText, setsearchText] = useState("");
+  const [searchText, setSearchText] = useState("");
   useEffect(() => {
     fetchData();
   }, []);
@@ -36,7 +36,7 @@ const Body = () => {
     <div className="body">
       <div className="filter">
         <div className="search">
-          <input
+        <input
             type="text"
             className="search-box"
             value={searchText}
@@ -51,7 +51,7 @@ const Body = () => {
               console.log(searchText);
 
               const filteredRestaurant = listOfRestaurants.filter((res) =>
-                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
 
               setFilteredRestaurant(filteredRestaurant);
